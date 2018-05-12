@@ -1,0 +1,26 @@
+{
+  "name": "reversi",
+  "version": "1.0.0",
+  "description": "Starter template for the game of reversi",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codethirteen/reversi.git"
+  },
+  "keywords": [
+    "reversi"
+  ],
+  "author": "Paul A. Tutty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codethirteen/reversi/issues"
+  },
+  "homepage": "https://github.com/codethirteen/reversi#readme",
+  "dependencies": {
+    "node-static": "^0.7.10",
+    "socket.io": "^2.1.0"
+  }
+}
