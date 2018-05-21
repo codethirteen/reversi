@@ -1,5 +1,4 @@
 /*jslint node: true */
-"use strict";
 // include static file web server library
 var static = require('node-static');
 // include the http server library
