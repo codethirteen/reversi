@@ -59,3 +59,15 @@ typings/
 
 # next.js build output
 .next
+
+#codekit configuration file
+config.codekit3
+
+#eslint config file
+.eslint
+
+#csscomb config file
+.csscomb
+
+#babelrc config file
+.babelrc
