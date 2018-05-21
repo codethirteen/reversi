@@ -2,23 +2,6 @@ body
 {
  transform-style: preserve-3d;
 }
-.navbar
-{
- box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
- display: flex;
- height: 72px !important;
- transform: translateY(1);
- transition: transform .3s cubic-bezier(.4, 0, .6, 1), opacity 0s .3s;
- width: 100%;
- z-index: 4;
-}
-@media screen and (min-width: 521px)
-{
-.header__nav-item:first-child 
-{
- display: block;
-}
-}
 .sticky-footer
 {
  display: flex;
@@ -36,26 +19,44 @@ section
 img + span.badge
 {
  position: absolute;
- right: 1.5rem;
- top: 0.1rem;
+ right: 1.2rem;
+ top: 0.4rem;
+ font-size: 0.5em;
 }
 .badge-round
 {
  border-radius: 50%;
  padding: 0.2rem 0.4rem;
 }
+.logo-wrapper 
+{
+  flex-grow: 1;
+}
 .logo-wrapper img
 {
  height: 30px;
  width: auto;
 }
-@media screen and (min-width:991px)
+.navbar
 {
- .logo-wrapper img
- {
- height: 40px;
- width: auto;
- }
+ box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+ height: 72px !important;
+ transform: translateY(1);
+ transition: transform .3s cubic-bezier(.4, 0, .6, 1), opacity 0s .3s;
+ width: 100%;
+ z-index: 4;
+}
+#navbar {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#navbar .navbar-nav
+{
+  flex-direction: row;
 }
 .header__nav-item--active .header__nav-indicator
 {
@@ -73,11 +74,13 @@ img + span.badge
  transition: transform 235ms cubic-bezier(.4, 0, .2, 1);
  width: 100%;
 }
+
 .header__nav-item
 {
  display: table-cell;
  text-align: center;
 }
+
 @media screen and (min-width:521px)
 {
  .header__nav-item
@@ -87,7 +90,7 @@ img + span.badge
  }
  .header__nav-item:first-child
  {
- display: none;
+ display: inline-block;
  }
 }
 .header__nav-item--active .header__nav-link
@@ -113,8 +116,6 @@ img + span.badge
 {
  align-items: center;
  color: #bbb;
- display: inline-block;
- display: inline-flex;
  font-size: 1.25rem !important;
  height: 100%;
  line-height: 66px;
@@ -127,6 +128,13 @@ img + span.badge
 .header__nav-item.active .header__nav-link
 {
  color: #fff;
+}
+@media screen and (max-width:550px)
+{
+  .header__nav-link
+  {
+     margin: 0 4px;
+  }
 }
 #playButton 
 {
@@ -191,7 +199,7 @@ img + span.badge
  {
  transform: rotateY(180deg);
  }
-}
+} 
 @-webkit-keyframes flipReversi
 {
  from
@@ -228,4 +236,16 @@ a
  {
  padding-left: 0 !important;
  }
+}
+
+/* about page styling*/
+body.about .container-fluid .row:first-of-type
+{
+  max-height: 20em;
+}
+
+/* name.html styling */
+.invisible 
+{
+  visibility: hidden
 }
