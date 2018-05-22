@@ -10,6 +10,12 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <script>
+  function submitForm(){
+    var username = $('#playerName').val();
+    window.location.href = 'lobby.html?username='+username;  
+  }
+  </script>
 </head>
 
 <body class="grey lighten-3 sticky-footer">
@@ -58,7 +64,7 @@
         <div class="card">
           <!--content-->
           <div class="card-body">
-            <form>
+            <form onsubmit="submitForm(); return false">
               <div class="md-form form-group form-lg">
                 <i class="fa fa-user prefix grey-text col-6" style="left:0;width:auto;"></i>
                 <input placeholder="your name" type="text" id="playerName" class="form-control form-control-lg">
