@@ -129,10 +129,16 @@ img + span.badge
 {
  color: #fff;
 }
+.dropdown .dropdown-menu.dropdown-secondary .dropdown-item:active, 
+.dropdown .dropdown-menu.dropdown-secondary .dropdown-item:hover 
+{
+    background-color: #2A479E !important;
+}
 @media screen and (max-width:550px)
 {
   .header__nav-link
   {
+     margin: 0 4px;
      margin: 0 4px;
   }
 }
@@ -140,10 +146,12 @@ img + span.badge
 {
  transform: translateZ(1em);
 }
+/*
 .reducedTranslateZ 
 {
  transform: translateZ(-1em);
 }
+*/
 .wrapper
 {
  font-size: 62.5%;
@@ -221,7 +229,7 @@ img + span.badge
 }
 p 
 {
- max-width: 80ch;
+ margin: 1em 8em;
  word-break: break-word;
  word-spacing: -0.01em;
 }
