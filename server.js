@@ -1,4 +1,5 @@
 /*jslint node: true */
+// SET UP THE STATIC FILE SERVER
 // include static file web server library
 var static = require('node-static');
 // include the http server library
@@ -21,3 +22,25 @@ var app = http.createServer(function (request, response) {
 }).listen(port);
 // log message so we know everything is a-okay
 console.log('The server is running');
+
+// SET UP THE WEB SOCKET SERVER
+var io = require('socket.io').listen(app);
+
+io.on('connection', function (socket) {
+  
+  function log() {
+    var array = ['*** Server log message: '];
+    for (var i = 0; i < arguments.length; i++) {
+      array.push(arguments[i]);
+      console.log(arguments[i]);
+    }
+    socket.emit('log', array);
+    socket.broadcast.emit('log', array);
+  }
+  log('A website connected to the server');
+
+  socket.on('disconnect', function (socket) {
+    log('A website disconnected from the server');
+  });
+});
+          
