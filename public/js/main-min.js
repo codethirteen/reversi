@@ -1,0 +1,1 @@
+"use strict";function getURLParameters(e){for(var r=window.location.search.substring(1),a=r.split("&"),s=0;s<a.length;s++){var n=a[s].split("=");if(n[0]==e)return n[1]}}var username=getURLParameters("username");void 0!==username&&username||(username="Anonymous_"+Math.random()),$("#messages").append("<h4>"+getURLParameters("username")+"</h4>");
