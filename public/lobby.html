@@ -1,61 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='x-ua-compatible' content='ie=edge'>
   <title>Reversi | Game Lobby</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/mdb.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link href='css/bootstrap.min.css' rel='stylesheet'>
+  <link href='css/mdb.css' rel='stylesheet'>
+  <link href='css/style.css' rel='stylesheet'>
 </head>
 
-<body class="grey lighten-3 sticky-footer">
+<body class='grey lighten-3 sticky-footer'>
   <header>
-    <nav class="mb-4 navbar navbar-expand navbar-dark primary-color-dark lighten-1" role="navigation">
-      <a class="logo-wrapper ml-2 mr-4 d-none d-lg-block"><img src="img/logo.png" alt="reversi logo"></a>
+    <nav class='mb-4 navbar navbar-expand navbar-dark primary-color-dark lighten-1' role='navigation'>
+      <a class='logo-wrapper ml-2 mr-4 d-none d-lg-block'><img src='img/logo.png' alt='reversi logo'></a>
 
-      <div id="navbar">
-        <ul class="navbar-nav mr-auto">
-          <li class="header__nav-item">
-            <a class="header__nav-link" href="index.html">Home
-            </a>
+      <div id='navbar'>
+        <ul class='navbar-nav mr-auto'>
+          <li class='header__nav-item'>
+            <a class='header__nav-link' href='index.html'>Home</a>
           </li>
-          <li class="header__nav-item--active">
-            <a class="header__nav-link" href="lobby.html">Game Lobby<span class="header__nav-indicator"></span></a>
+          <li class='header__nav-item--active'>
+            <a class='header__nav-link' href='lobby.html'>Game Lobby<span class='header__nav-indicator'></span></a>
           </li>
-          <li class="header__nav-item">
-            <a class="header__nav-link" href="about.html">About</a>
+          <li class='header__nav-item'>
+            <a class='header__nav-link' href='about.html'>About</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-          <li class="header__nav-item avatar dropdown">
-            <a class="header__nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="https://avatars0.githubusercontent.com/u/21903" height="50" width="50" class="rounded-circle z-depth-0" alt="avatar image">
-              <span class="badge badge-round red">1</span>
+        <ul class='navbar-nav ml-auto nav-flex-icons'>
+          <li class='header__nav-item avatar dropdown'>
+            <a class='header__nav-link dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+              <img src='https://avatars0.githubusercontent.com/u/21903' height='50' width='50' class='rounded-circle z-depth-0' alt='avatar image'>
+              <span class='badge badge-round red'>1</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-secondary">
-              <a class="dropdown-item waves-effect waves-light" href="#">Public Profile</a>
-              <a class="dropdown-item waves-effect waves-light" href="#">Game History</a>
-              <a class="dropdown-item waves-effect waves-light" href="#">Message Center <span class="badge badge-round red">1</span></a>
-              <a class="dropdown-item waves-effect waves-light" href="#">Account Settings</a>
+            <div class='dropdown-menu dropdown-menu-right dropdown-secondary'>
+              <a class='dropdown-item waves-effect waves-light' href='#'>Public Profile</a>
+              <a class='dropdown-item waves-effect waves-light' href='#'>Game History</a>
+              <a class='dropdown-item waves-effect waves-light' href='#'>Message Center <span class='badge badge-round red'>1</span></a>
+              <a class='dropdown-item waves-effect waves-light' href='#'>Account Settings</a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
   </header>
-  <section class="container-fluid mt-0">
+  <section class='container-fluid mt-0'>
     <!--row-->
-    <div class="row wow fadeIn">
+    <div class='row wow fadeIn'>
       <!--column-->
-      <div class="col-md-12 mb-4">
+      <div class='col-md-12 mb-4'>
         <!--card-->
-        <div class="card">
+        <div class='card'>
           <!--content-->
-          <div class="card-body">
+          <div class='card-body'>
             <h3>Messages</h3>
           </div>
         </div>
@@ -65,14 +64,21 @@
     </div>
     <!--row-->
     <!--row-->
-    <div class="row wow fadeIn reducedTranslateZ">
+    <div class='row wow fadeIn reducedTranslateZ'>
       <!--column-->
-      <div class="col-md-4 offset-md-4 mb-4">
+      <div class='col-md-4 offset-md-4 mb-4'>
         <!--card-->
-        <div class="card">
+        <div class='card'>
           <!--content-->
-          <div class="card-body text-center">
-            <div id="messages"></div>
+          <div class='card-body text-center'>
+            <div id='messages'></div>
+            <form action='' onSubmit='send_message(); return false;'>
+        <div class='form-group'>
+          <label for='send_message_holder' class='col-form-label sr-only'>Enter your chat message</label>
+          <input  class='form-control' type='text' value='' id='send_message_holder' placeholder='Enter you chat message' autocomplete='off' />
+        </div>
+        <button type='submit' class='btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple'>Send</button>
+      </form>
           </div>
         </div>
         <!--card-->
@@ -81,13 +87,13 @@
     </div>
     <!--row-->
     <!--row-->
-    <div class="row wow fadeIn">
+    <div class='row wow fadeIn'>
       <!--column-->
-      <div class="col-md-8 offset-md-2 mb-4">
+      <div class='col-md-8 offset-md-2 mb-4'>
         <!--card-->
-        <div class="card">
+        <div class='card'>
           <!--content-->
-          <div class="card-body text-center">
+          <div class='card-body text-center'>
           </div>
         </div>
         <!--card-->
@@ -96,24 +102,24 @@
     </div>
     <!--row-->
     <!--row-->
-    <div class="row wow fadeIn">
+    <div class='row wow fadeIn'>
       <!--column-->
-      <div class="col-md-4 offset-md-2 mb-4">
+      <div class='col-md-4 offset-md-2 mb-4'>
         <!--card-->
-        <div class="card">
+        <div class='card'>
           <!--content-->
-          <div class="card-body text-center">
+          <div class='card-body text-center'>
           </div>
         </div>
         <!--card-->
       </div>
       <!--column-->
       <!--column-->
-      <div class="col-md-4 offset-md-48 mb-4">
+      <div class='col-md-4 offset-md-48 mb-4'>
         <!--card-->
-        <div class="card">
+        <div class='card'>
           <!--content-->
-          <div class="card-body text-center">
+          <div class='card-body text-center'>
           </div>
         </div>
         <!--card-->
@@ -122,20 +128,20 @@
     </div>
     <!--row-->
   </section>
-  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 pt-2 wow fadeIn">
-    <div class="footer-copyright py-3">
+  <footer class='page-footer text-center font-small primary-color-dark darken-2 mt-4 pt-2 wow fadeIn'>
+    <div class='footer-copyright py-3'>
       <p>Developed for the MHCID program @ University of California, Irvine</p>
     </div>
   </footer>
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <script type="text/javascript">
+  <script type='text/javascript' src='js/jquery-3.2.1.min.js'></script>
+  <script type='text/javascript' src='js/popper.min.js'></script>
+  <script type='text/javascript' src='js/bootstrap.min.js'></script>
+  <script type='text/javascript' src='js/mdb.min.js'></script>
+  <script type='text/javascript'>
     new WOW().init();
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs=" crossorigin="anonymous"></script>
-  <script src="js/main.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js' integrity='sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs=' crossorigin='anonymous'></script>
+  <script src='js/main.js'></script>
 </body>
 
 </html>
