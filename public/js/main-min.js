@@ -122,6 +122,7 @@ function send_message() {
   e.message = $("#send_message_holder").val();
   console.log("*** Client Log Message: 'send_message' payload: " + JSON.stringify(e));
   socket.emit("send_message", e);
+  $("#send_message_holder").val("");
 }
 
 function makeInviteButton(e) {

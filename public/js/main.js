@@ -1,4 +1,5 @@
 'use strict';
+
 function getURLParameters(whichParam) {
   var pageURL = window.location.search.substring(1);
   var pageURLVariables = pageURL.split('&');
@@ -21,7 +22,7 @@ if ('undefined' == typeof chat_room || !chat_room) {
 }
 
 /* Connect to the socket server */
-  var socket = io.connect();
+var socket = io.connect();
 
 /* What to do when the server sends me a log message */
 socket.on('log', function (array) {
@@ -58,8 +59,7 @@ socket.on('join_room_response', function (payload) {
     $('#players').append(nodeA, nodeB);
     nodeA.slideDown(1000);
     nodeB.slideDown(1000);
-  }
-  else {
+  } else {
     buttonC = makeInviteButton(payload.socket_id);
     $('.socket_' + payload.socket_id + ' button').replaceWith(buttonC);
     dom_element.slideDown(1000);
@@ -142,6 +142,7 @@ function send_message() {
   payload.message = $('#send_message_holder').val();
   console.log('*** Client Log Message: \'send_message\' payload: ' + JSON.stringify(payload));
   socket.emit('send_message', payload);
+  $('#send_message_holder').val("");
 }
 
 function makeInviteButton(socket_id) {
