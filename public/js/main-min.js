@@ -1,1 +1,160 @@
-var static=require("node-static"),http=require("http"),port=process.env.PORT,directory=__dirname+"/public";void 0!==port&&port||(directory="./public",port=8080);var file=new static.Server(directory),app=http.createServer(function(e,o){e.addListener("end",function(){file.serve(e,o)}).resume()}).listen(port);console.log("The server is running");var io=require("socket.io").listen(app);io.sockets.on("connection",function(e){function o(){for(var o=["*** Server Log Message: "],s=0;s<arguments.length;s++)o.push(arguments[s]),console.log(arguments[s]);e.emit("log",o),e.broadcast.emit("log",o)}o("A web site connected to the server"),e.on("disconnect",function(e){o("A web site disconnected to the server")}),e.on("join_room",function(s){if(o("server received a command","join_room",s),void 0===s||!s){var r="join_room had no payload, command aborted";return o(r),void e.emit("join_room_response",{result:"fail",message:r})}var i=s.room;if(void 0===i||!i)return r="join_room didn't specify a room, command aborted",o(r),void e.emit("join_room_response",{result:"fail",message:r});var n=s.username;if(void 0===n||!n)return r="join_room didn't specify a room, command aborted",o(r),void e.emit("join_room_response",{result:"fail",message:r});e.join(i);var t=io.sockets.adapter.rooms[i];if(void 0===t||!t)return r="join_room didn't create a room, command aborted",o(r),void e.emit("join_room_response",{result:"fail",message:r});var a=t.length,m={result:"success",room:i,username:n,membership:a+1};io.sockets.in(i).emit("join_room_response",m),o("Room "+i+" was just joined by "+n)}),e.on("send_message",function(s){if(o("server received a command","send_message",s),void 0===s||!s){var r="send_message had no payload, command aborted";return o(r),void e.emit("send_message_response",{result:"fail",message:r})}var i=s.room;if(void 0===i||!i)return r="send_message didn't specify a room, command aborted",o(r),void e.emit("send_message_response",{result:"fail",message:r});var n=s.username;if(void 0===n||!n)return r="send_message didn't specify a username, command aborted",o(r),void e.emit("send_message_response",{result:"fail",message:r});var t=s.message;if(void 0===t||!t)return r="send_message didn't specify a message, ABORTED",o(r),void e.emit("send_message_response",{result:"fail",message:r});var a={result:"success",room:i,username:n,message:t};io.sockets.in(i).emit("send_message_response",a),o("Message sent to room "+i+" by "+n)})});
+"use strict";
+
+function getURLParameters(e) {
+  var t = window.location.search.substring(1);
+  var n = t.split("&");
+  for (var s = 0; s < n.length; s++) {
+    var o = n[s].split("=");
+    if (o[0] == e) {
+      return o[1];
+    }
+  }
+}
+
+var username = getURLParameters("username");
+
+if ("undefined" == typeof username || !username) {
+  username = "Anonymous_" + Math.random();
+}
+
+var chat_room = getURLParameters("game_id");
+
+if ("undefined" == typeof chat_room || !chat_room) {
+  chat_room = "lobby";
+}
+
+var socket = io.connect();
+
+socket.on("log", function(e) {
+  console.log.apply(console, e);
+});
+
+socket.on("join_room_response", function(e) {
+  if (e.result === "fail") {
+    alert(e.message);
+    return;
+  }
+  if (e.socket_id === socket.id) {
+    return;
+  }
+  var t = $(".socket_" + e.socket_id);
+  if (t.length === 0) {
+    var n = $("<div><strong>" + e.username + "</strong></div>");
+    n.addClass("col-6 socket_" + e.socket_id);
+    var s = makeInviteButton(e.socket_id);
+    var o = $("<div></div>");
+    o.addClass("col-6 text-center socket_" + e.socket_id);
+    o.prepend(s);
+    n.hide();
+    o.hide();
+    $("#players").append(n, o);
+    n.slideDown(1e3);
+    o.slideDown(1e3);
+  } else {
+    s = makeInviteButton(e.socket_id);
+    $(".socket_" + e.socket_id + " button").replaceWith(s);
+    t.slideDown(1e3);
+  }
+  var a = "<p>" + e.username + " just entered the lobby</p>";
+  var r = $(a);
+  r.hide();
+  $("#messages").append(r);
+  r.slideDown(1e3);
+});
+
+socket.on("player_disconnected", function(e) {
+  console.log('*** Client Log Message: "disconnected" payload: ' + JSON.stringify(e));
+  if (e.result === "fail") {
+    alert(e.message);
+    return;
+  }
+  if (e.socket_id === socket.id) {
+    return;
+  }
+  var t = $(".socket_" + e.socket_id);
+  if (t.length !== 0) {
+    t.slideUp(1e3);
+  }
+  var n = "<p>" + e.username + " has left the lobby</p>";
+  var s = $(n);
+  s.hide();
+  $("#message").append(s);
+  s.slideDown(1e3);
+});
+
+function invite(e) {
+  var t = {};
+  t.requested_user = e;
+  console.log('*** Client Log Message: "invite" payload: ' + JSON.stringify(t));
+  socket.emit("invite", t);
+}
+
+socket.on("invite_response", function(e) {
+  if (e.result === "fail") {
+    alert(e.message);
+    return;
+  }
+  var t = makeInvitedButton();
+  $(".socket_" + e.socket_id + " button").replaceWith(t);
+});
+
+socket.on("invited", function(e) {
+  if (e.result === "fail") {
+    alert(e.message);
+    return;
+  }
+  var t = makePlayButton();
+  $(".socket_" + e.socket_id + " button").replaceWith(t);
+});
+
+socket.on("send_message_response", function(e) {
+  if (e.result == "fail") {
+    alert(e.message);
+    return;
+  }
+  $("#messages").append("<p><strong>" + e.username + " says:</strong> " + e.message + "</p>");
+});
+
+function send_message() {
+  var e = {};
+  e.room = chat_room;
+  e.username = username;
+  e.message = $("#send_message_holder").val();
+  console.log("*** Client Log Message: 'send_message' payload: " + JSON.stringify(e));
+  socket.emit("send_message", e);
+}
+
+function makeInviteButton(e) {
+  var t = "<button type='button' class='btn blue-gradient waves-effect waves-light'>INVITE</button>";
+  var n = $(t);
+  n.click(function() {
+    invite(e);
+  });
+  return n;
+}
+
+function makeInvitedButton() {
+  var e = "<button type='button' class='btn invited-gradient waves-effect waves-light'>INVITED</button>";
+  var t = $(e);
+  return t;
+}
+
+function makePlayButton() {
+  var e = "<button type='button' class='btn play-gradient waves-effect waves-light'>PLAY</button>";
+  var t = $(e);
+  return t;
+}
+
+function makeEngageButton() {
+  var e = "<button type='button' class='btn engaged-gradient waves-effect waves-light'>ENGAGED</button>";
+  var t = $(e);
+  return t;
+}
+
+$(function() {
+  var e = {};
+  e.room = chat_room;
+  e.username = username;
+  console.log("*** Client Log Message: 'join_room payload: " + JSON.stringify(e));
+  socket.emit("join_room", e);
+});
