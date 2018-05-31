@@ -78,7 +78,7 @@ socket.on("player_disconnected", function(e) {
   var n = "<p>" + e.username + " has left the lobby</p>";
   var s = $(n);
   s.hide();
-  $("#message").append(s);
+  $("#messages").append(s);
   s.slideDown(1e3);
 });
 

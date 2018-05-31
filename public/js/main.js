@@ -98,7 +98,7 @@ socket.on('player_disconnected', function (payload) {
   var newHTML = '<p>' + payload.username + ' has left the lobby</p>';
   var newNode = $(newHTML);
   newNode.hide();
-  $('#message').append(newNode);
+  $('#messages').append(newNode);
   newNode.slideDown(1000);
 });
 
