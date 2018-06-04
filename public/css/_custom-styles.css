@@ -475,7 +475,7 @@ body.about .container-fluid .row:first-of-type {
 
 .welcomePlayer {
   padding: 0 0.8rem 0.2rem;
-  border-bottom: 1px solid #DADADA;
+  border-bottom: 1px solid #dadada;
   margin: 0 0 1rem; }
 
 #lobby .chip a:focus,
