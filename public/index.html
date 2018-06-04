@@ -6,161 +6,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Reversi | Shall we Play a Game?</title>
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body class="grey lighten-3 sticky-footer">
-<header>
-  <nav class="mb-4 navbar navbar-expand navbar-dark primary-color-dark lighten-1" role="navigation">
-    <a class="logo-wrapper ml-2 mr-4 d-none d-lg-block"><img src="img/logo.png" alt="reversi logo"></a>
+  <header>
+    <nav class="mb-4 navbar navbar-expand navbar-dark primary-color-dark lighten-1"
+      role="navigation">
+      <a class="logo-wrapper ml-2 mr-4 d-none d-lg-block">
+        <img src="img/logo.png" alt="reversi logo">
+      </a>
 
-    <div id="navbar">
-      <ul class="navbar-nav mr-auto">
-        <li class="header__nav-item--active">
-          <a class="header__nav-link" href="index.html">Home
-            <span class="header__nav-indicator"></span>
-          </a>
-        </li>
-        <li class="header__nav-item">
-          <a class="header__nav-link" href="lobby.html">Game Lobby</a>
-        </li>
-        <li class="header__nav-item">
-          <a class="header__nav-link" href="about.html">About</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto nav-flex-icons">
-        <li class="header__nav-item avatar dropdown">
-          <a class="header__nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="https://avatars0.githubusercontent.com/u/21903" height="50" width="50"
-                 class="rounded-circle z-depth-0" alt="avatar image">
-            <span class="badge badge-round red">1</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-secondary">
-            <a class="dropdown-item waves-effect waves-light" href="#">Public Profile</a>
-            <a class="dropdown-item waves-effect waves-light" href="#">Game History</a>
-            <a class="dropdown-item waves-effect waves-light" href="#">Message Center <span
-              class="badge badge-round red">1</span></a>
-            <a class="dropdown-item waves-effect waves-light" href="#">Account Settings</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-<section class="container-fluid mt-0">
-  <!--row-->
-  <div class="row wow fadeIn">
-    <!--column-->
-    <div class="col-md-12 mb-4">
-      <!--card-->
-      <div class="card">
-        <!--content-->
-        <div class="card-body col__bg__image--gradient">
-          <div class="logo-container">
-            <div id="logo" class="reversi">
+      <div id="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="header__nav-item--active">
+            <a class="header__nav-link" href="index.html">Home
+              <span class="header__nav-indicator"></span>
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="lobby.html">Game Lobby</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="header__nav-item avatar dropdown">
+            <a class="header__nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <img src="https://avatars0.githubusercontent.com/u/21903" height="50" width="50"
+                class="rounded-circle z-depth-0" alt="avatar image">
+              <span class="badge badge-round red">1</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-secondary">
+              <a class="dropdown-item waves-effect waves-light" href="#">Public Profile</a>
+              <a class="dropdown-item waves-effect waves-light" href="#">Game History</a>
+              <a class="dropdown-item waves-effect waves-light" href="#">Message Center
+                <span class="badge badge-round red">1</span>
+              </a>
+              <a class="dropdown-item waves-effect waves-light" href="#">Account Settings</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <section class="container-fluid mt-0">
+    <!--row-->
+    <div class="row wow fadeIn">
+      <!--column-->
+      <div class="col-md-12 mb-4">
+        <!--card-->
+        <div class="card">
+          <!--content-->
+          <div class="card-body col__bg__image--gradient">
+            <div class="logo-container">
+              <div id="logo" class="reversi">
+              </div>
             </div>
           </div>
         </div>
+        <!--card-->
       </div>
-      <!--card-->
+      <!--column-->
     </div>
-    <!--column-->
-  </div>
-  <!--row-->
-  <!--row-->
-  <div class="row wow fadeIn reducedTranslateZ">
-    <!--column-->
-    <div class="col-md-4 offset-md-4 mb-4">
-      <!--card-->
-      <div class="card">
-        <!--content-->
-        <div class="card-body text-center">
-          <a href="name.html" id="playButton"
-             class="btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple"><i
-            class="fa fa-play" aria-hidden="true"></i> PLAY</a>
+    <!--row-->
+    <!--row-->
+    <div class="row wow fadeIn reducedTranslateZ">
+      <!--column-->
+      <div class="col-md-4 offset-md-4 mb-4">
+        <!--card-->
+        <div class="card">
+          <!--content-->
+          <div class="card-body text-center">
+            <a href="name.html" id="playButton" class="btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple">
+              <i class="fa fa-play" aria-hidden="true"></i> PLAY</a>
+          </div>
         </div>
+        <!--card-->
       </div>
-      <!--card-->
+      <!--column-->
     </div>
-    <!--column-->
-  </div>
-  <!--row-->
-  <!--row-->
-  <div class="row wow fadeIn">
-    <!--column-->
-    <div class="col-md-8 offset-md-2 mb-4">
-      <!--card-->
-      <div class="card">
-        <!--content-->
-        <div class="card-body text-center">
-          <p>
-            <i class="fa fa-braille fa-4x" aria-hidden="true" style="transform:rotateY(180deg);"></i>
-            <i class="fa fa-braille fa-4x" aria-hidden="true"></i><br>
-            <i class="fa fa-braille fa-4x" aria-hidden="true"></i>
-            <i class="fa fa-braille fa-4x" aria-hidden="true" style="transform:rotateY(180deg)" ;></i>
-          </p>
-          <p>Reversi is a 1 or 2-player strategy board game played on an 8×8 uncheckered board. There are sixty-four
-             identical game pieces called discs that have a light and dark side. Players take turns placing their color
-             discs on the board until they are out of moves.During a play, your reverse your opponent's discs by placing
-             your disc next to one of theirs. You change opponent disc colors by placing your discs adjacent to one of
-             their discs and one of your own. If both these conditions are met, you change the color of all opponent
-             discs in a straight line from the placed one. The player with the most discs in their color, once both
-             players are out of moves, wins.</p>
+    <!--row-->
+    <!--row-->
+    <div class="row wow fadeIn">
+      <!--column-->
+      <div class="col-md-8 offset-md-2 mb-4">
+        <!--card-->
+        <div class="card">
+          <!--content-->
+          <div class="card-body text-center">
+            <p>
+              <i class="fa fa-braille fa-4x" aria-hidden="true" style="transform:rotateY(180deg);"></i>
+              <i class="fa fa-braille fa-4x" aria-hidden="true"></i>
+              <br>
+              <i class="fa fa-braille fa-4x" aria-hidden="true"></i>
+              <i class="fa fa-braille fa-4x" aria-hidden="true" style="transform:rotateY(180deg);"></i>
+            </p>
+            <p>Reversi is a 1 or 2-player strategy board game played on an
+              8×8 uncheckered board. There are sixty-four identical game
+              pieces called discs that have a light and dark side. Players
+              take turns placing their color discs on the board until they
+              are out of moves.During a play, your reverse your opponent's
+              discs by placing your disc next to one of theirs. You change
+              opponent disc colors by placing your discs adjacent to one
+              of their discs and one of your own. If both these conditions
+              are met, you change the color of all opponent discs in a
+              straight line from the placed one. The player with the most
+              discs in their color, once both players are out of moves,
+              wins.
+            </p>
+          </div>
         </div>
+        <!--card-->
       </div>
-      <!--card-->
+      <!--column-->
     </div>
-    <!--column-->
-  </div>
-  <!--row-->
-  <!--row-->
-  <div class="row wow fadeIn">
-    <!--column-->
-    <div class="col-md-4 offset-md-2 mb-4">
-      <!--card-->
-      <div class="card">
-        <!--content-->
-        <div class="card-body text-center">
-          <a href="about.html"
-             class="btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple">ABOUT</a>
+    <!--row-->
+    <!--row-->
+    <div class="row wow fadeIn">
+      <!--column-->
+      <div class="col-md-4 offset-md-2 mb-4">
+        <!--card-->
+        <div class="card">
+          <!--content-->
+          <div class="card-body text-center">
+            <a href="about.html" class="btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple">ABOUT</a>
+          </div>
         </div>
+        <!--card-->
       </div>
-      <!--card-->
-    </div>
-    <!--column-->
-    <!--column-->
-    <div class="col-md-4 offset-md-48 mb-4">
-      <!--card-->
-      <div class="card">
-        <!--content-->
-        <div class="card-body text-center">
-          <a href="https://en.wikipedia.org/wiki/Reversi"
-             class="btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple">RULES</a>
+      <!--column-->
+      <!--column-->
+      <div class="col-md-4 offset-md-48 mb-4">
+        <!--card-->
+        <div class="card">
+          <!--content-->
+          <div class="card-body text-center">
+            <a href="https://en.wikipedia.org/wiki/Reversi" class="btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple">RULES</a>
+          </div>
         </div>
+        <!--card-->
       </div>
-      <!--card-->
+      <!--column-->
     </div>
-    <!--column-->
-  </div>
-  <!--row-->
-</section>
-<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 pt-2 wow fadeIn">
-  <div class="footer-copyright py-3">
-    <p>Developed for the MHCID program @ University of California, Irvine</p>
-  </div>
-</footer>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/popper.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/mdb.min.js"></script>
-<script type="text/javascript" src="js/custom-min.js"></script>
-<script type="text/javascript">
-  new WOW().init();
-</script>
+    <!--row-->
+  </section>
+  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 pt-2 wow fadeIn">
+    <div class="footer-copyright py-3">
+      <p>Developed for the MHCID program @ University of California, Irvine</p>
+    </div>
+  </footer>
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="js/custom-min.js"></script>
+  <script type="text/javascript">
+    new WOW().init();
+  </script>
 </body>
 
 </html>

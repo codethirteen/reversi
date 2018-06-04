@@ -138,7 +138,7 @@ img + span.badge {
 
 .dropdown .dropdown-menu.dropdown-secondary .dropdown-item:active,
 .dropdown .dropdown-menu.dropdown-secondary .dropdown-item:hover {
-  background-color: #2A479E !important; }
+  background-color: #2a479e !important; }
 
 @media screen and (max-width: 550px) {
   .header__nav-link {
@@ -199,17 +199,32 @@ img + span.badge {
   background: url("../img/logo.png") center center/contain no-repeat; }
 
 @-webkit-keyframes flipIsrever {
-  from {
+  0% {
     -webkit-transform: rotateY(0);
             transform: rotateY(0); }
-  to {
+  100% {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); } }
+
+@keyframes flipIsrever {
+  0% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0); }
+  100% {
     -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg); } }
 @-webkit-keyframes flipReversi {
-  from {
+  0% {
     -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg); }
-  to {
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg); } }
+@keyframes flipReversi {
+  0% {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); }
+  100% {
     -webkit-transform: rotateY(360deg);
             transform: rotateY(360deg); } }
 .col__bg__image--gradient {
@@ -241,8 +256,8 @@ body.about .container-fluid .row:first-of-type {
   height: 4rem;
   font-size: 4rem;
   color: #212529;
-  -webkit-animation: ringBell 3.5s .8s ease-in-out 2;
-          animation: ringBell 3.5s .8s ease-in-out 2;
+  -webkit-animation: ringBell 3.5s 0.8s ease-in-out 2;
+          animation: ringBell 3.5s 0.8s ease-in-out 2;
   -webkit-transform-origin: 50% 0.4rem;
           transform-origin: 50% 0.4rem; }
 
@@ -433,7 +448,7 @@ body.about .container-fluid .row:first-of-type {
   -o-object-fit: cover;
   object-fit: cover; }
 
-#lobby .chip .button {
+#lobby .chip .btn {
   float: right;
   margin: 0 0 0 5px;
   padding: 0 20px 0 0;
@@ -445,13 +460,23 @@ body.about .container-fluid .row:first-of-type {
   color: #fff;
   text-decoration: none; }
 
-#lobby .chip .button.inviteButton {
+#lobby .chip .btn.inviteButton {
   background: url(../img/add_friend.png) center center/32px 32px no-repeat; }
 
-#lobby .chip .button.invitedButton {
+#lobby .chip .btn.invitedButton {
   background: #f44336 url(../img/add_friend.png) center center/32px 32px no-repeat !important;
   -webkit-transition: 0.1s;
   transition: 0.1s; }
+
+#players .btn {
+  width: 100%;
+  padding: 0.8rem 0.5rem;
+  word-wrap: normal; }
+
+.welcomePlayer {
+  padding: 0 0.8rem 0.2rem;
+  border-bottom: 1px solid #DADADA;
+  margin: 0 0 1rem; }
 
 #lobby .chip a:focus,
 #lobby .chip a:hover {
@@ -477,3 +502,34 @@ body.about .container-fluid .row:first-of-type {
 .engaged-gradient {
   background: -webkit-gradient(linear, left top, right top, from(#ef473a), to(#cb2d3e));
   background: linear-gradient(to right, #ef473a, #cb2d3e); }
+
+#messages {
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  height: 25vh; }
+
+#messages p {
+  margin: 0.1rem 0 !important; }
+
+/*=============================================
+=            Game Page                        =
+=============================================*/
+table#game_board {
+  margin: auto;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #646464; }
+
+table#game_board td {
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #323232; }
+
+/*=====  End of Game Page  ======*/
