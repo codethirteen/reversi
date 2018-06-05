@@ -247,7 +247,9 @@ a {
   .navbar,
   .page-footer {
     padding-left: 0 !important; } }
-/* about page styling*/
+/*=============================================
+=            About Page                       =
+=============================================*/
 body.about .container-fluid .row:first-of-type {
   max-height: 20em; }
 
@@ -412,7 +414,9 @@ body.about .container-fluid .row:first-of-type {
 .invisible {
   visibility: hidden; }
 
-/* lobby */
+/*=============================================
+=            Lobby Page                       =
+=============================================*/
 @media (max-width: 1600px) {
   #lobby p {
     margin: 1em 0 !important; } }
@@ -522,14 +526,26 @@ body.about .container-fluid .row:first-of-type {
 =============================================*/
 table#game_board {
   margin: auto;
-  border-style: solid;
-  border-width: 10px;
-  border-color: #646464; }
+  border: 0.5rem solid #323232;
+  background: #548e52; }
 
 table#game_board td {
-  padding: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #323232; }
+  height: 69px;
+  width: 69px;
+  border: 1px solid #323232; }
+
+.hovered_over:hover {
+  background-image: url(../img/discs/hover.gif);
+  background-color: yellow;
+  background-size: 100% 100%; }
+
+/*
+.hovered_over:hover {
+    background-image: url("../images/hover.gif"); background-size: 100% 100%; background-color: transparent;
+}*/
+#quit .btn {
+  color: white;
+  background: -webkit-gradient(linear, left top, right top, from(#ef473a), to(#cb2d3e));
+  background: linear-gradient(to right, #ef473a, #cb2d3e); }
 
 /*=====  End of Game Page  ======*/

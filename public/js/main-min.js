@@ -2,9 +2,9 @@
 
 function getURLParameters(e) {
   var t = window.location.search.substring(1);
-  var s = t.split("&");
-  for (var o = 0; o < s.length; o++) {
-    var a = s[o].split("=");
+  var o = t.split("&");
+  for (var s = 0; s < o.length; s++) {
+    var a = o[s].split("=");
     if (a[0] == e) {
       return a[1];
     }
@@ -29,7 +29,7 @@ socket.on("log", function(e) {
   console.log.apply(console, e);
 });
 
-socket.on("connect", function(e) {
+socket.on("connect", function() {
   window.addEventListener("load", function() {
     var e = $("<div><strong>Hello, " + username + "</strong></div>");
     e.addClass("col-12 welcomePlayer");
@@ -48,24 +48,24 @@ socket.on("join_room_response", function(e) {
   if (e.socket_id === socket.id) {
     return;
   }
-  var s = $(".socket_" + e.socket_id);
-  if (s.length === 0) {
-    var o = $("<div><strong>" + e.username + "</strong></div>");
-    o.addClass("col-6 socket_" + e.socket_id);
+  var o = $(".socket_" + e.socket_id);
+  if (o.length === 0) {
+    var s = $("<div><strong>" + e.username + "</strong></div>");
+    s.addClass("col-6 socket_" + e.socket_id);
     t = makeInviteButton(e.socket_id);
     var a = $("<div></div>");
     a.addClass("col-6 text-center socket_" + e.socket_id);
     a.prepend(t);
-    o.hide();
+    s.hide();
     a.hide();
-    $("#players").append(o, a);
-    o.slideDown(250);
+    $("#players").append(s, a);
+    s.slideDown(250);
     a.slideDown(250);
   } else {
     uninvite(e.socket_id);
     t = makeInviteButton(e.socket_id);
     $(".socket_" + e.socket_id + " btn").replaceWith(t);
-    s.slideDown(250);
+    o.slideDown(250);
   }
   var n = "<p>" + e.username + " just entered the lobby</p>";
   var r = $(n);
@@ -87,11 +87,11 @@ socket.on("player_disconnected", function(e) {
   if (t.length !== 0) {
     t.slideUp(250);
   }
-  var s = "<p class='animated bounce' data-wow-delay='2.5s'>" + e.username + " has left the lobby</p>";
-  var o = $(s);
-  o.hide();
-  $("#messages").prepend(o);
-  o.slideDown(250);
+  var o = "<p class='animated bounce' data-wow-delay='2.5s'>" + e.username + " has left the lobby</p>";
+  var s = $(o);
+  s.hide();
+  $("#messages").prepend(s);
+  s.slideDown(250);
 });
 
 function invite(e) {
@@ -176,37 +176,37 @@ socket.on("send_message_response", function(e) {
     return;
   }
   var t = "<p><b>" + e.username + " says:</b> " + e.message + "</p>";
-  var s = $(t);
-  s.hide();
-  $("#messages").prepend(s);
-  s.slideDown(250);
+  var o = $(t);
+  o.hide();
+  $("#messages").prepend(o);
+  o.slideDown(250);
 });
 
 function makeInviteButton(e) {
   var t = "<button type='button' class='btn blue-gradient waves-effect waves-light'>INVITE</button>";
-  var s = $(t);
-  s.click(function() {
+  var o = $(t);
+  o.click(function() {
     invite(e);
   });
-  return s;
+  return o;
 }
 
 function makeInvitedButton(e) {
   var t = "<button type='button' class='btn invited-gradient waves-effect waves-light'>INVITED</button>";
-  var s = $(t);
-  s.click(function() {
+  var o = $(t);
+  o.click(function() {
     uninvite(e);
   });
-  return s;
+  return o;
 }
 
 function makePlayButton(e) {
   var t = "<button type='button' class='btn play-gradient waves-effect waves-light'>PLAY</button>";
-  var s = $(t);
-  s.click(function() {
+  var o = $(t);
+  o.click(function() {
     game_start(e);
   });
-  return s;
+  return o;
 }
 
 function makeEngagedButton() {
@@ -221,7 +221,7 @@ $(function() {
   e.username = username;
   console.log("*** Client Log Message: 'join_room payload: " + JSON.stringify(e));
   socket.emit("join_room", e);
-  $("#quit").append('<a href="lobby.html?username=' + username + '" class="btn engaged-gradient waves-effect waves-light active" role="button" aria-pressed="true">QUIT</a>');
+  $("#quit").append('<a href="lobby.html?username=' + username + '" class="btn btn-danger btn-default active" role="button" aria-pressed="true">Quit</a>');
 });
 
 var old_board = [ [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "?", "?", "?", "?", "?" ] ];
@@ -229,79 +229,77 @@ var old_board = [ [ "?", "?", "?", "?", "?", "?", "?", "?" ], [ "?", "?", "?", "
 var my_color = " ";
 
 socket.on("game_update", function(e) {
-  var t;
   console.log("*** Client Log Message: 'game_update' \n\tpayload: " + JSON.stringify(e));
   if (e.result === "fail") {
     console.log(e.message);
     window.location.href = "lobby.html?username=" + username;
     return;
   }
-  var s = e.game.board;
-  if ("undefined" === typeof s || !s) {
+  var t = e.game.board;
+  if ("undefined" === typeof t || !t) {
     console.log("Internal error: received a malformed board update from the server");
     return;
   }
   if (socket.id === e.game.player_white.socket) {
-    t = "white";
+    my_color = "white";
   } else if (socket.id === e.game.player_black.socket) {
-    t = "black";
+    my_color = "black";
   } else {
     window.location.href = "lobby.html?username=" + username;
     return;
   }
-  $("#my_color").html('<h3 id="my_color">I am ' + t + "</h3>");
+  $("#my_color").html('<h3 id="my_color">I am ' + my_color + "</h3>");
   var o = 0;
-  var a = 0;
-  var n, r;
-  for (n = 0; n < 8; n++) {
-    for (r = 0; r < 8; r++) {
-      if (s[n][r] === "b") {
+  var s = 0;
+  var a, n;
+  for (a = 0; a < 8; a++) {
+    for (n = 0; n < 8; n++) {
+      if (t[a][n] === "b") {
         o++;
       }
-      if (s[n][r] === "w") {
-        a++;
+      if (t[a][n] === "w") {
+        s++;
       }
-      if (old_board[n][r] !== s[n][r]) {
-        if (old_board[n][r] === "?" && s[n][r] === " ") {
-          $("#" + n + "_" + r).html('<img src="assets/images/empty.gif" alt="empty square"/>');
-        } else if (old_board[n][r] === "?" && s[n][r] === "w") {
-          $("#" + n + "_" + r).html('<img src="assets/images/empty_to_white.gif" alt="white square">');
-        } else if (old_board[n][r] === "?" && s[n][r] === "b") {
-          $("#" + n + "_" + r).html('<img src="assets/images/empty_to_black.gif" alt="black square">');
-        } else if (old_board[n][r] === " " && s[n][r] === "w") {
-          $("#" + n + "_" + r).html('<img src="assets/images/empty_to_white.gif" alt="empty square">');
-        } else if (old_board[n][r] === " " && s[n][r] === "b") {
-          $("#" + n + "_" + r).html('<img src="assets/images/empty_to_black.gif" alt="empty square">');
-        } else if (old_board[n][r] === " " && s[n][r] === "w") {
-          $("#" + n + "_" + r).html('<img src="assets/images/white_to_black.gif" alt="black square">');
-        } else if (old_board[n][r] === " " && s[n][r] === "b") {
-          $("#" + n + "_" + r).html('<img src="assets/images/black_to_white.gif" alt="white square">');
+      if (old_board[a][n] !== t[a][n]) {
+        if (old_board[a][n] === "?" && t[a][n] === " ") {
+          $("#" + a + "_" + n).html('<img src="../img/discs/trans.gif" alt="empty square"/>');
+        } else if (old_board[a][n] === "?" && t[a][n] === "w") {
+          $("#" + a + "_" + n).html('<img src="../img/discs/t2w.gif" alt="white square">');
+        } else if (old_board[a][n] === "?" && t[a][n] === "b") {
+          $("#" + a + "_" + n).html('<img src="../img/discs//t2b.gif" alt="black square">');
+        } else if (old_board[a][n] === " " && t[a][n] === "w") {
+          $("#" + a + "_" + n).html('<img src="../img/discs/t2w.gif" alt="empty square">');
+        } else if (old_board[a][n] === " " && t[a][n] === "b") {
+          $("#" + a + "_" + n).html('<img src="../img/discs/t2b.gif" alt="empty square">');
+        } else if (old_board[a][n] === " " && t[a][n] === "w") {
+          $("#" + a + "_" + n).html('<img src="../img/discs/w2b.gif" alt="black square">');
+        } else if (old_board[a][n] === " " && t[a][n] === "b") {
+          $("#" + a + "_" + n).html('<img src="../img/discs/w2b.gif" alt="white square">');
         } else {
-          $("#" + n + "_" + r).html('<img src="assets/images/error.gif" alt="white square"> alt="error"/>');
+          $("#" + a + "_" + n).html('<img src="../img/discs/error.gif" alt="error"/>');
         }
-        $("#" + n + "_" + r).off("click");
-        if (s[n][r] === " ") {
-          $("#" + n + "_" + r).addClass("hovered_over");
-          t = t;
-          $("#" + n + "_" + r).click(function(e, s) {
+        $("#" + a + "_" + n).off("click");
+        if (t[a][n] === " ") {
+          $("#" + a + "_" + n).addClass("hovered_over");
+          $("#" + a + "_" + n).click(function(e, t) {
             return function() {
               var o = {};
               o.row = e;
-              o.column = s;
-              o.color = t;
+              o.column = t;
+              o.color = my_color;
               console.log("*** Client Log Message: 'Play_token' payload: " + JSON.stringify(o));
               socket.emit("play_token", o);
             };
-          }(n, r));
+          }(a, n));
         } else {
-          $("#" + n + "_" + r).removeClass("hovered_over");
+          $("#" + a + "_" + n).removeClass("hovered_over");
         }
       }
     }
   }
   $("#blacksum").html(o);
-  $("#whitesum").html(a);
-  old_board = s;
+  $("#whitesum").html(s);
+  old_board = t;
 });
 
 socket.on("play_token_response", function(e) {
