@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Reversi | What"s Your Name?</title>
+  <title>Reversi | What's Your Name?</title>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,8 +27,7 @@
     <div id="navbar">
       <ul class="navbar-nav mr-auto">
         <li class="header__nav-item">
-          <a class="header__nav-link" href="index.html">Home
-          </a>
+          <a class="header__nav-link" href="index.html">Home</a>
         </li>
         <li class="header__nav-item">
           <a class="header__nav-link" href="lobby.html">Game Lobby</a>
@@ -67,7 +66,7 @@
       <div class="card">
         <!--content-->
         <div class="card-body">
-          <form onsubmit="submitForm(); return false;">
+          <form action="#" method="get" onsubmit="submitForm(); return false;">
             <div class="md-form form-group form-lg">
               <i class="fa fa-user prefix grey-text col-6" style="left:0;width:auto;"></i>
               <label for="username" class="invisible">Your name</label>
@@ -75,7 +74,7 @@
             </div>
 
             <div class="text-center mt-4">
-              <a href="lobby.html" class="btn btn-primary">Enter Lobby</a>
+              <a href="lobby.html" onclick="submitForm(); return false;" class="btn btn-primary">Enter Lobby</a>
             </div>
           </form>
         </div>

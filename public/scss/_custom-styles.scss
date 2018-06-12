@@ -117,7 +117,7 @@ img + span.badge {
   transform: translateZ(1em);
 }
 /*
-.reducedTranslateZ 
+.reducedTranslateZ
 {
  transform: translateZ(-1em);
 }
@@ -392,36 +392,276 @@ body.about .container-fluid .row:first-of-type {
   overflow-y: auto;
   display: flex;
   flex-direction: column-reverse;
-  height: 25vh;
+  //height: 25vh;
 }
 #messages p {
   margin: 0.1rem 0 !important;
+}
+.card-img-64 {
+  width: 64px;
+  height: 64px;
 }
 
 /*=============================================
 =            Game Page                        =
 =============================================*/
-table#game_board {
-  margin: auto;
-  border: 0.5rem solid rgb(50, 50, 50);
-  background: #548e52;
+#game h3.card-header {
+  text-transform: uppercase;
 }
-table#game_board td {
-  height: 69px;
-  width: 69px;
-  border: 1px solid rgb(50, 50, 50);
-}
-.hovered_over:hover {
-    background-image: url(../img/discs/hover.gif); 
-    background-color: yellow; 
-    background-size: 100% 100%;
-}
-/*
-.hovered_over:hover {
-    background-image: url("../images/hover.gif"); background-size: 100% 100%; background-color: transparent;
-}*/
 #quit .btn {
-  color: white;
+  color: #fff;
   background: linear-gradient(to right, #ef473a, #cb2d3e);
 }
+/*----------  Game Scoreboard  ----------*/
+.progress {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.progress .progress-bar {
+  height: 3rem;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #388e3c;
+}
+.text-score {
+  font-size: 4rem;
+  color: #000; /* fallback color */
+  -webkit-text-fill-color: #fff;
+  -webkit-text-stroke: 0.2rem #000;
+}
+#gameTime {
+  background: #000;
+}
+#elapsed {
+  color: #ff0;
+  padding: 0.5rem 0 0rem !important;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: Orbitron;
+}
+/*----------  Game Board  ----------*/
+#game_board {
+  margin: auto;
+  border: 0.5rem solid rgb(50, 50, 50);
+  background: #00499D;
+  width: 100%;
+  border-collapse: collapse;
+}
+#game_board td {
+  width: 10%;
+  position: relative;
+  border: 1px solid rgb(50, 50, 50);
+  display: table-cell;
+}
+#game_board td:after {
+  content: " ";
+  display: block;
+  margin-top: 100%;
+}
+#game_board td .content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #00499D;
+  cursor: pointer;
+}
+#game_board td.error {
+  border: 5px #f00;
+}
+#game_board td.empty {
+  background: transparent;
+}
+.hovered_over:hover {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Thank you http://www.colorzilla.com/gradient-editor/ */
+  background: radial-gradient(
+    ellipse at center,
+    #d7ef1f 0%,
+    #dbe585 20%,
+    #bdd600 48%,
+    #dbe29c 78%,
+    #d7ef1c 100%
+  );
+  background-size: 200%;
+  /* Thank you https://bennettfeely.com/clippy/ */
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    10% 100%,
+    10% 10%,
+    90% 10%,
+    90% 90%,
+    10% 90%,
+    10% 100%,
+    100% 100%,
+    100% 0%
+  );
+  animation: animate-border 1s ease-in-out infinite;
+}
+@keyframes animate-border {
+  0% {
+    background-position: 15% 0%;
+  }
+  25% {
+    background-position: 50% 15%;
+  }
+  50% {
+    background-position: 100% 30%;
+  }
+  75% {
+    background-position: 15% 50%;
+  }
+  100% {
+    background-position: 15% 0%;
+  }
+}
+/*----------  Game Discs  ----------*/
+.disc {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 1px solid #00499D;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+td.b2w .disc {
+  background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
+}
+td.b2w .disc:hover {
+  -webkit-animation: flip-disc-b2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+  animation: flip-disc-b2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+td.b2t .disc {
+  background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
+}
+td.b2t .disc:hover {
+  -webkit-animation: flip-disc-b2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+  animation: flip-disc-b2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+td.t2w .disc {
+  background: transparent;
+  border: 0;
+}
+td.t2w .disc:hover {
+  -webkit-animation: flip-disc-t2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+  animation: flip-disc-t2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+td.t2b .disc {
+  background: transparent;
+  border: 0;
+}
+td.t2b .disc:hover {
+  -webkit-animation: flip-disc-t2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+  animation: flip-disc-t2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+td.w2b .disc {
+  background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
+}
+td.w2b .disc:hover {
+  -webkit-animation: flip-disc-w2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+  animation: flip-disc-w2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+td.w2t .disc {
+  background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
+}
+td.w2t .disc:hover {
+  -webkit-animation: flip-disc-w2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+  animation: flip-disc-w2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+@keyframes flip-disc-b2w {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
+  }
+}
+@keyframes flip-disc-b2t {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    background: transparent;
+  }
+}
+@keyframes flip-disc-t2b {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    background: transparent;
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
+  }
+}
+@keyframes flip-disc-t2w {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    background: transparent;
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
+  }
+}
+@keyframes flip-disc-w2b {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
+  }
+}
+@keyframes flip-disc-w2t {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    background: transparent;
+  }
+}
+@keyframes flip-disc {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+
 /*=====  End of Game Page  ======*/
