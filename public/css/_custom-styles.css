@@ -515,7 +515,9 @@ body.about .container-fluid .row:first-of-type {
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse; }
+          flex-direction: column-reverse;
+  min-height: 450px;
+  max-height: 480px; }
 
 #messages p {
   margin: 0.1rem 0 !important; }
@@ -535,6 +537,22 @@ body.about .container-fluid .row:first-of-type {
   background: -webkit-gradient(linear, left top, right top, from(#ef473a), to(#cb2d3e));
   background: linear-gradient(to right, #ef473a, #cb2d3e); }
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.row-eq-height > [class*="col-"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
 /*----------  Game Scoreboard  ----------*/
 .progress {
   height: 3rem;
@@ -543,34 +561,42 @@ body.about .container-fluid .row:first-of-type {
 .progress .progress-bar {
   height: 3rem;
   font-size: 2rem;
-  color: #fff;
-  background-color: #388e3c; }
+  color: #fff; }
+
+#whitePlayer,
+#blackPlayer {
+  text-transform: uppercase; }
 
 .text-score {
-  font-size: 4rem;
-  color: #000;
-  /* fallback color */
-  -webkit-text-fill-color: #fff;
-  -webkit-text-stroke: 0.2rem #000; }
+  font-size: 2.1rem;
+  color: #00499d; }
 
 #gameTime {
-  background: #000; }
+  background: #00499d; }
 
 #elapsed {
-  color: #ff0;
-  padding: 0.5rem 0 0rem !important;
-  font-size: 3rem;
+  color: #fff;
+  padding: 0.5rem 0 0 !important;
+  font-size: 2.2rem;
   font-weight: bold;
-  font-family: Orbitron; }
+  text-indent: 0.5rem;
+  font-family: Orbitron, -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; }
+
+#scoreBoard h4 {
+  white-space: nowrap;
+  font-size: 1.3rem; }
 
 /*----------  Game Board  ----------*/
 #game_board {
   margin: auto;
   border: 0.5rem solid #323232;
-  background: #00499D;
+  background: #00499d;
   width: 100%;
   border-collapse: collapse; }
 
+@media (min-width: 768px) {
+  #game_board {
+    width: 75%; } }
 #game_board td {
   width: 10%;
   position: relative;
@@ -588,7 +614,7 @@ body.about .container-fluid .row:first-of-type {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #00499D;
+  background: transparent;
   cursor: pointer; }
 
 #game_board td.error {
@@ -597,50 +623,37 @@ body.about .container-fluid .row:first-of-type {
 #game_board td.empty {
   background: transparent; }
 
-.hovered_over:hover {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* Thank you http://www.colorzilla.com/gradient-editor/ */
-  background: radial-gradient(ellipse at center, #d7ef1f 0%, #dbe585 20%, #bdd600 48%, #dbe29c 78%, #d7ef1c 100%);
-  background-size: 200%;
-  /* Thank you https://bennettfeely.com/clippy/ */
-  -webkit-clip-path: polygon(0% 0%, 0% 100%, 10% 100%, 10% 10%, 90% 10%, 90% 90%, 10% 90%, 10% 100%, 100% 100%, 100% 0%);
-          clip-path: polygon(0% 0%, 0% 100%, 10% 100%, 10% 10%, 90% 10%, 90% 90%, 10% 90%, 10% 100%, 100% 100%, 100% 0%);
-  -webkit-animation: animate-border 1s ease-in-out infinite;
-          animation: animate-border 1s ease-in-out infinite; }
+#game_board td.hovered_over {
+  border: 5px solid rgba(237, 234, 151, 0.2); }
 
-@-webkit-keyframes animate-border {
-  0% {
-    background-position: 15% 0%; }
-  25% {
-    background-position: 50% 15%; }
-  50% {
-    background-position: 100% 30%; }
-  75% {
-    background-position: 15% 50%; }
-  100% {
-    background-position: 15% 0%; } }
+#game_board td.hovered_over:hover {
+  background: linear-gradient(320deg, #15e8e1, #1593e8);
+  background-size: 400% 400%;
+  -webkit-animation: hoverButton 2s ease infinite;
+  animation: hoverButton 2s ease infinite; }
 
-@keyframes animate-border {
+@-webkit-keyframes hoverButton {
   0% {
-    background-position: 15% 0%; }
-  25% {
-    background-position: 50% 15%; }
+    background-position: 11% 0%; }
   50% {
-    background-position: 100% 30%; }
-  75% {
-    background-position: 15% 50%; }
+    background-position: 90% 100%; }
   100% {
-    background-position: 15% 0%; } }
+    background-position: 11% 0%; } }
+@keyframes hoverButton {
+  0% {
+    background-position: 11% 0%; }
+  50% {
+    background-position: 90% 100%; }
+  100% {
+    background-position: 11% 0%; } }
 /*----------  Game Discs  ----------*/
 .disc {
+  position: absolute;
+  top: 5%;
+  left: 5%;
   width: 90%;
   height: 90%;
   border-radius: 50%;
-  border: 1px solid #00499D;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -652,46 +665,34 @@ body.about .container-fluid .row:first-of-type {
   display: flex; }
 
 td.b2w .disc {
-  background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521); }
-
-td.b2w .disc:hover {
+  background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
   -webkit-animation: flip-disc-b2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-disc-b2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 
 td.b2t .disc {
-  background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521); }
-
-td.b2t .disc:hover {
+  background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
   -webkit-animation: flip-disc-b2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-disc-b2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 
 td.t2w .disc {
   background: transparent;
-  border: 0; }
-
-td.t2w .disc:hover {
+  border: 0;
   -webkit-animation: flip-disc-t2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-disc-t2w 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 
 td.t2b .disc {
   background: transparent;
-  border: 0; }
-
-td.t2b .disc:hover {
+  border: 0;
   -webkit-animation: flip-disc-t2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-disc-t2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 
 td.w2b .disc {
-  background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4); }
-
-td.w2b .disc:hover {
+  background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
   -webkit-animation: flip-disc-w2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-disc-w2b 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 
 td.w2t .disc {
-  background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4); }
-
-td.w2t .disc:hover {
+  background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e2e9d4);
   -webkit-animation: flip-disc-w2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-disc-w2t 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 

@@ -2,9 +2,9 @@
 
 function getURLParameters(e) {
   var t = window.location.search.substring(1);
-  var o = t.split("&");
-  for (var a = 0; a < o.length; a++) {
-    var s = o[a].split("=");
+  var a = t.split("&");
+  for (var o = 0; o < a.length; o++) {
+    var s = a[o].split("=");
     if (s[0] === e) {
       return s[1];
     }
@@ -48,24 +48,24 @@ socket.on("join_room_response", function(e) {
   if (e.socket_id === socket.id) {
     return;
   }
-  var o = $(".socket_" + e.socket_id);
-  if (o.length === 0) {
-    var a = $("<div><strong>" + e.username + "</strong></div>");
-    a.addClass("col-6 socket_" + e.socket_id);
+  var a = $(".socket_" + e.socket_id);
+  if (a.length === 0) {
+    var o = $("<div><strong>" + e.username + "</strong></div>");
+    o.addClass("col-6 socket_" + e.socket_id);
     t = makeInviteButton(e.socket_id);
     var s = $("<div></div>");
     s.addClass("col-6 text-center socket_" + e.socket_id);
     s.prepend(t);
-    a.hide();
+    o.hide();
     s.hide();
-    $("#players").append(a, s);
-    a.slideDown(250);
+    $("#players").append(o, s);
+    o.slideDown(250);
     s.slideDown(250);
   } else {
     uninvite(e.socket_id);
     t = makeInviteButton(e.socket_id);
     $(".socket_" + e.socket_id + " btn").replaceWith(t);
-    o.slideDown(250);
+    a.slideDown(250);
   }
   var n = "<p>" + e.username + " just entered the lobby</p>";
   var r = $(n);
@@ -87,11 +87,11 @@ socket.on("player_disconnected", function(e) {
   if (t.length !== 0) {
     t.slideUp(250);
   }
-  var o = '<p class="animated bounce" data-wow-delay="2.5s">' + e.username + " has left the lobby</p>";
-  var a = $(o);
-  a.hide();
-  $("#messages").prepend(a);
-  a.slideDown(250);
+  var a = '<p class="animated bounce" data-wow-delay="2.5s">' + e.username + " has left the lobby</p>";
+  var o = $(a);
+  o.hide();
+  $("#messages").prepend(o);
+  o.slideDown(250);
 });
 
 function invite(e) {
@@ -176,37 +176,37 @@ socket.on("send_message_response", function(e) {
     return;
   }
   var t = '<span class="text-left mb-3">' + e.message + '</span><h5 class="text-left border-bottom mt-4 mb-3 blue-text">' + e.username + "</h5>";
-  var o = $(t);
-  o.hide();
-  $("#messages").prepend(o);
-  o.slideDown(500);
+  var a = $(t);
+  a.hide();
+  $("#messages").prepend(a);
+  a.slideDown(500);
 });
 
 function makeInviteButton(e) {
   var t = '<button type="button"' + 'class="btn blue-gradient waves-effect' + 'waves-light">INVITE</button>';
-  var o = $(t);
-  o.click(function() {
+  var a = $(t);
+  a.click(function() {
     invite(e);
   });
-  return o;
+  return a;
 }
 
 function makeInvitedButton(e) {
   var t = '<button type="button" class="btn invited-gradient waves-effect waves-light">INVITED</button>';
-  var o = $(t);
-  o.click(function() {
+  var a = $(t);
+  a.click(function() {
     uninvite(e);
   });
-  return o;
+  return a;
 }
 
 function makePlayButton(e) {
   var t = '<button type="button" class="btn play-gradient waves-effect waves-light">PLAY</button>';
-  var o = $(t);
-  o.click(function() {
+  var a = $(t);
+  a.click(function() {
     game_start(e);
   });
-  return o;
+  return a;
 }
 
 function makeEngagedButton() {
@@ -245,94 +245,105 @@ socket.on("game_update", function(e) {
   if ("undefined" === typeof t || !t) {
     console.log("Internal error: received a malformed board update from the server");
   }
+  var a = "";
+  var o = "";
   if (socket.id === e.game.player_white.socket) {
-    my_color = "white";
+    a = "white";
+    o = e.game.player_black.username;
   } else if (socket.id === e.game.player_black.socket) {
-    my_color = "black";
+    a = "black";
+    o = e.game.player_white.username;
   } else {
     window.location.href = "lobby.html?username=" + username;
     return;
   }
-  $("#my_color").html('<h3 id="my_color">I am ' + my_color + "</h3>");
-  $("#gameTime").append('<p id="elapsed" class="m-0 p-0"></p>');
+  if (a === "white") {
+    $("#blackPlayer").html(o);
+    $("#whitePlayer").html(username);
+  } else if (a === "black") {
+    $("#blackPlayer").html(username);
+    $("#whitePlayer").html(o);
+  } else {
+    $("#blackPlayer").html("BLACK");
+    $("#whitePlayer").html("WHITE");
+  }
   clearInterval(interval_timer);
   interval_timer = setInterval(function(e) {
     return function() {
       var t = new Date();
-      var o = t.getTime() - e;
-      var a = Math.floor(o / (60 * 1e3));
-      var s = Math.floor(o % (60 * 1e3) / 1e3);
+      var a = t.getTime() - e;
+      var o = Math.floor(a / (60 * 1e3));
+      var s = Math.floor(a % (60 * 1e3) / 1e3);
       if (s < 10) {
-        $("#elapsed").html(a + ":0" + s);
+        $("#elapsed").fadeIn(250).html(o + ":0" + s);
       } else {
-        $("#elapsed").html(a + ":" + s);
+        $("#elapsed").fadeIn(250).html(o + ":" + s);
       }
     };
   }(e.game.last_move_time), 1e3);
-  var o = 0;
-  var a = 0;
-  var s, n;
-  for (s = 0; s < 8; s++) {
-    for (n = 0; n < 8; n++) {
-      if (t[s][n] === "b") {
-        o++;
+  var s = 0;
+  var n = 0;
+  var r, l;
+  for (r = 0; r < 8; r++) {
+    for (l = 0; l < 8; l++) {
+      if (t[r][l] === "b") {
+        s++;
       }
-      if (t[s][n] === "w") {
-        a++;
+      if (t[r][l] === "w") {
+        n++;
       }
     }
   }
-  for (s = 0; s < 8; s++) {
-    for (n = 0; n < 8; n++) {
-      if (old_board[s][n] !== t[s][n]) {
-        if (old_board[s][n] === "?" && t[s][n] === " ") {
-          $("#" + s + "_" + n).addClass("empty");
-        } else if (old_board[s][n] === "?" && t[s][n] === "w") {
-          $("#" + s + "_" + n).addClass("t2w");
-        } else if (old_board[s][n] === "?" && t[s][n] === "b") {
-          $("#" + s + "_" + n).addClass("t2b");
-        } else if (old_board[s][n] === " " && t[s][n] === "w") {
-          $("#" + s + "_" + n).addClass("t2w");
-        } else if (old_board[s][n] === " " && t[s][n] === "b") {
-          $("#" + s + "_" + n).addClass("t2b");
-        } else if (old_board[s][n] === "w" && t[s][n] === " ") {
-          $("#" + s + "_" + n).addClass("w2t");
-        } else if (old_board[s][n] === "b" && t[s][n] === " ") {
-          $("#" + s + "_" + n).addClass("b2t");
-        } else if (old_board[s][n] === "w" && t[s][n] === "b") {
-          $("#" + s + "_" + n).addClass("w2b");
-        } else if (old_board[s][n] === "b" && t[s][n] === "w") {
-          $("#" + s + "_" + n).addClass("b2w");
+  for (r = 0; r < 8; r++) {
+    for (l = 0; l < 8; l++) {
+      if (old_board[r][l] !== t[r][l]) {
+        if (old_board[r][l] === "?" && t[r][l] === " ") {
+          $("#" + r + "_" + l).removeClass().addClass("empty");
+        } else if (old_board[r][l] === "?" && t[r][l] === "w") {
+          $("#" + r + "_" + l).removeClass().addClass("t2w");
+        } else if (old_board[r][l] === "?" && t[r][l] === "b") {
+          $("#" + r + "_" + l).removeClass().addClass("t2b");
+        } else if (old_board[r][l] === " " && t[r][l] === "w") {
+          $("#" + r + "_" + l).removeClass().addClass("t2w");
+        } else if (old_board[r][l] === " " && t[r][l] === "b") {
+          $("#" + r + "_" + l).removeClass().addClass("t2b");
+        } else if (old_board[r][l] === "w" && t[r][l] === " ") {
+          $("#" + r + "_" + l).removeClass().addClass("w2t");
+        } else if (old_board[r][l] === "b" && t[r][l] === " ") {
+          $("#" + r + "_" + l).removeClass().addClass("b2t");
+        } else if (old_board[r][l] === "w" && t[r][l] === "b") {
+          $("#" + r + "_" + l).removeClass().addClass("w2b");
+        } else if (old_board[r][l] === "b" && t[r][l] === "w") {
+          $("#" + r + "_" + l).removeClass().addClass("b2w");
         } else {
-          $("#" + s + "_" + n).addClass("error");
+          $("#" + r + "_" + l).removeClass().addClass("error");
         }
       }
-      $("#" + s + "_" + n).off("click");
-      $("#" + s + "_" + n).removeClass("hovered_over");
-      if (e.game.whose_turn === my_color) {
-        if (e.game.legal_moves[s][n] === my_color.substr(0, 1)) {
-          $("#" + s + "_" + n).addClass("hovered_over");
-          $("#" + s + "_" + n).click(function(e, t) {
+      $("#" + r + "_" + l).off("click");
+      $("#" + r + "_" + l).removeClass("hovered_over");
+      if (e.game.whose_turn === a) {
+        if (e.game.legal_moves[r][l] === a.substr(0, 1)) {
+          $("#" + r + "_" + l).removeClass().addClass("hovered_over");
+          $("#" + r + "_" + l).click(function(e, t) {
             return function() {
               var o = {};
               o.row = e;
               o.column = t;
-              o.color = my_color;
+              o.color = a;
               console.log("*** Client Log Message : 'play token' payload: " + JSON.stringify(o));
               socket.emit("play_token", o);
             };
-          }(s, n));
+          }(r, l));
         }
       }
     }
   }
-  $("#messages").css("height", "53vh");
-  $("#blacksum").html(o);
-  $("#whitesum").html(a);
-  var r = a / 64 * 100;
-  $("#whiteScore").attr("aria-valuenow", a).css("width", r + "%").html(r + "%");
-  var i = o / 64 * 100;
-  $("#blackScore").attr("aria-valuenow", o).css("width", i + "%").html(i + "%");
+  $("#blacksum").html(s);
+  $("#whitesum").html(n);
+  var i = (n / 64 * 100).toFixed(0);
+  $("#whiteScore").attr("aria-valuenow", n).css("width", i + "%").html(i + "%");
+  var d = (s / 64 * 100).toFixed(0);
+  $("#blackScore").attr("aria-valuenow", s).css("width", d + "%").html(d + "%");
   old_board = t;
 });
 
@@ -351,6 +362,5 @@ socket.on("game_over", function(e) {
     console.log(e.message);
     return;
   }
-  $("#game_over").html("<h3>Game Over</h3><h4>" + e.who_won + " won!</h4>");
-  $("#game_over").append('<a href="lobby.html?username=' + username + '" class="btn btn-success btn-lg active" role="button" aria-pressed="true"> Return to the Lobby </a>');
+  $("#game_over").html('<div class="alert alert-dismissable alert-success" role="alert"><h4 class="alert-heading">GAME OVER</h4><h5>' + e.who_won + ' won!</h5><hr><a href="lobby.html?username=' + username + '" class="btn btn-success btn-lg active" role="button" aria-pressed="true"> Return to the Lobby </a></div>');
 });

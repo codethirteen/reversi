@@ -693,7 +693,6 @@ function send_game_update(socket, game_id, message) {
   }
 
   /*Assign colors to the players if not already done */
-
   if (games[game_id].player_white.socket == "") {
     if (games[game_id].player_black.socket != socket.id) {
       games[game_id].player_white.socket = socket.id;
@@ -712,16 +711,18 @@ function send_game_update(socket, game_id, message) {
     result: "success",
     game: games[game_id],
     message: message,
-    game_id: game_id
+    game_id: game_id,
+    count: count,
+    black: black,
+    white: white
   };
   io.in(game_id).emit("game_update", success_data);
 
   /*Check to see if the game is over*/
-
   var row, column;
-  var count = 0;
-  var black = 0;
-  var white = 0;
+  var count = '';
+  var black = '';
+  var white = '';
   for (row = 0; row < 8; row++) {
     for (column = 0; column < 8; column++) {
       if (games[game_id].legal_moves[row][column] != " ") {
@@ -735,7 +736,7 @@ function send_game_update(socket, game_id, message) {
       }
     }
   }
-  if (count == 0) {
+  if (count === 0) {
     /* Send a game over message */
     var winner = "tie game";
     if (black > white) {
@@ -748,7 +749,10 @@ function send_game_update(socket, game_id, message) {
       result: "success",
       game: games[game_id],
       who_won: winner,
-      game_id: game_id
+      game_id: game_id,
+      count: count,
+      black: black,
+      white: white
     };
     io.in(game_id).emit("game_over", success_data);
 

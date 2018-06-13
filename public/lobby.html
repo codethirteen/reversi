@@ -6,18 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Reversi | Game Lobby</title>
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-    crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body id="lobby" class="grey lighten-3 sticky-footer">
   <header>
-    <nav class="mb-4 navbar navbar-expand navbar-dark primary-color-dark lighten-1"
-      role="navigation">
+    <nav class="mb-4 navbar navbar-expand navbar-dark primary-color-dark lighten-1" role="navigation">
       <a class="logo-wrapper ml-2 mr-4 d-none d-lg-block">
         <img src="img/logo.png" alt="reversi logo">
       </a>
@@ -38,10 +34,8 @@
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">
           <li class="header__nav-item avatar dropdown">
-            <a class="header__nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              <img src="https://avatars0.githubusercontent.com/u/21903" height="50" width="50"
-                class="rounded-circle z-depth-0" alt="avatar image">
+            <a class="header__nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://avatars0.githubusercontent.com/u/21903" height="50" width="50" class="rounded-circle z-depth-0" alt="avatar image">
               <span class="badge badge-round red">1</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-secondary">
@@ -87,8 +81,8 @@
             <form onsubmit="send_message(); return false;">
               <div class="form-group">
                 <label for="send_message_holder" class="col-form-label sr-only">Enter your chat message</label>
-                <input class="form-control" type="text" value="" id="send_message_holder"
-                  placeholder="Enter your message" autocomplete="off" />
+                <input class="form-control" type="text" value="" id="send_message_holder" placeholder="Enter your message" autocomplete="off"
+                />
               </div>
               <button type="submit" class="btn btn-raised btn-primary btn-lg mx-auto waves waves-button waves-effect waves-ripple">Send
               </button>
@@ -144,8 +138,8 @@
   <script type="text/javascript">
     new WOW().init();
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"
-    integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs="
+    crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
   <script type="text/javascript" src="js/custom-min.js"></script>
 </body>
