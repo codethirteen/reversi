@@ -8,7 +8,7 @@ var http = require("http");
 var port = process.env.PORT;
 var directory = __dirname + "/public";
 /* If not on Heroku, readjust port and directory information*/
-if (typeof port == "undefined" || !port) {
+if (typeof port === "undefined" || !port) {
   directory = "./public";
   port = 8080;
 }
@@ -660,11 +660,11 @@ function send_game_update(socket, game_id, message) {
     numClients = roomObject.length;
     if (numClients > 2) {
       console.log("Too many clients in room: " + game_id + " #: " + numClients);
-      if (games[game_id].player_white.socket == roomObject.sockets[0]) {
+      if (games[game_id].player_white.socket === roomObject.sockets[0]) {
         games[game_id].player_white.socket = "";
         games[game_id].player_white.username = "";
       }
-      if (games[game_id].player_black.socket == roomObject.sockets[0]) {
+      if (games[game_id].player_black.socket === roomObject.sockets[0]) {
         games[game_id].player_black.socket = "";
         games[game_id].player_black.username = "";
       }
@@ -693,13 +693,13 @@ function send_game_update(socket, game_id, message) {
   }
 
   /*Assign colors to the players if not already done */
-  if (games[game_id].player_white.socket == "") {
+  if (games[game_id].player_white.socket === "") {
     if (games[game_id].player_black.socket != socket.id) {
       games[game_id].player_white.socket = socket.id;
       games[game_id].player_white.username = players[socket.id].username;
     }
   }
-  if (games[game_id].player_black.socket == "") {
+  if (games[game_id].player_black.socket === "") {
     if (games[game_id].player_white.socket != socket.id) {
       games[game_id].player_black.socket = socket.id;
       games[game_id].player_black.username = players[socket.id].username;
@@ -719,10 +719,11 @@ function send_game_update(socket, game_id, message) {
   io.in(game_id).emit("game_update", success_data);
 
   /*Check to see if the game is over*/
-  var row, column;
-  var count = '';
-  var black = '';
-  var white = '';
+  var row;
+  var column;
+  var count;
+  var black;
+  var white;
   for (row = 0; row < 8; row++) {
     for (column = 0; column < 8; column++) {
       if (games[game_id].legal_moves[row][column] != " ") {
@@ -738,15 +739,15 @@ function send_game_update(socket, game_id, message) {
   }
   if (count === 0) {
     /* Send a game over message */
-    var winner = "tie game";
+    var winner = 'tie game';
     if (black > white) {
-      winner = "black";
+      winner = 'black';
     }
     if (white > black) {
-      winner = "white";
+      winner = 'white';
     }
     success_data = {
-      result: "success",
+      result: 'success',
       game: games[game_id],
       who_won: winner,
       game_id: game_id,

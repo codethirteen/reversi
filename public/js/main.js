@@ -1,3 +1,6 @@
+/*globals io*/
+/*eslint-disable no-console*/
+
 'use strict';
 function getURLParameters(whichParam) {
   var pageURL = window.location.search.substring(1);
@@ -253,7 +256,7 @@ $(function () {
   var payload = {};
   payload.room = chat_room;
   payload.username = username;
-  console.log('*** Client Log Message: \'join_room\ payload: '+ JSON.stringify(payload));
+  console.log('*** Client Log Message: \'join_room\' payload: '+ JSON.stringify(payload));
   socket.emit('join_room', payload);
   $('#quit').append('<button type="button" id="quitBtn" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#modalConfirmQuit">QUIT</button>');
 });
@@ -448,7 +451,7 @@ socket.on('play_token_response', function (payload) {
 socket.on('game_over', function (payload) {
   console.log('*** Client Log Message: \'game_over\'\n\tpayload: ' + JSON.stringify(payload));
   /* Check for a good game over response */
-  if (payload.result === 'fail') {
+  if (payload.result == 'fail') {
     console.log(payload.message);
     return;
   }
