@@ -63,7 +63,7 @@ typings/
 #environment config files
 .eslint
 .jshintrc
-.eslintrc
+.eslintrc.json
 .csscomb
 .babelrc
 config.rb
