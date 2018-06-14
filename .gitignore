@@ -60,14 +60,49 @@ typings/
 # next.js build output
 .next
 
-#codekit configuration file
-config.codekit3
-
-#eslint config file
+#environment config files
 .eslint
-
-#csscomb config file
+.jshintrc
+.eslintrc
 .csscomb
-
-#babelrc config file
 .babelrc
+config.rb
+config.codekit3
+/min
+package-lock.json
+
+
+# General
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+.DS_Store
+
+#vscode specific
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

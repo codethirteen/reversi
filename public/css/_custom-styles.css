@@ -614,8 +614,7 @@ body.about .container-fluid .row:first-of-type {
   bottom: 0;
   left: 0;
   right: 0;
-  background: transparent;
-  cursor: pointer; }
+  background: transparent; }
 
 #game_board td.error {
   border: 5px #f00; }
@@ -630,7 +629,8 @@ body.about .container-fluid .row:first-of-type {
   background: linear-gradient(320deg, #15e8e1, #1593e8);
   background-size: 400% 400%;
   -webkit-animation: hoverButton 2s ease infinite;
-  animation: hoverButton 2s ease infinite; }
+  animation: hoverButton 2s ease infinite;
+  cursor: pointer; }
 
 @-webkit-keyframes hoverButton {
   0% {

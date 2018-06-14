@@ -490,7 +490,6 @@ body.about .container-fluid .row:first-of-type {
   left: 0;
   right: 0;
   background: transparent;
-  cursor: pointer;
 }
 #game_board td.error {
   border: 5px #f00;
@@ -507,6 +506,7 @@ body.about .container-fluid .row:first-of-type {
   -webkit-animation: hoverButton 2s ease infinite;
   -moz-animation: hoverButton 2s ease infinite;
   animation: hoverButton 2s ease infinite;
+  cursor: pointer;
 }
 @-webkit-keyframes hoverButton {
   0% {

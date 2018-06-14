@@ -356,6 +356,7 @@ socket.on("invite", function(payload) {
       });
       return;
     }
+
     /* If everything is okay respond to the game starter that it was successful */
     var game_id = Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
