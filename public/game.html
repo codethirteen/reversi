@@ -35,23 +35,17 @@
         </ul>
         <ul class=" navbar-nav ml-auto nav-flex-icons">
           <li class="header__nav-item avatar dropdown">
-            <a class="header__nav-link dropdown-toggle
-              " data-toggle="dropdown " aria-haspopup="true" aria-expanded="false ">
-              <img src="https://avatars0.githubusercontent.com/u/21903
-              " height="50" width="50 " class="rounded-circle z-depth-0" alt="avatar image ">
-              <span class="badge badge-round red ">1</span>
+            <a class="header__nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://avatars0.githubusercontent.com/u/21903" height="50" width="50" class="rounded-circle z-depth-0" alt="avatar image">
+              <span class="badge badge-round red">1</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-secondary ">
-              <a class="dropdown-item waves-effect waves-light
-              " href="# ">Public Profile</a>
-              <a class="dropdown-item waves-effect waves-light
-              " href="# ">Game History</a>
-              <a class="dropdown-item waves-effect waves-light
-              " href="# ">Message Center
-                <span class="badge badge-round red ">1</span>
+            <div class="dropdown-menu dropdown-menu-right dropdown-secondary">
+              <a class="dropdown-item waves-effect waves-light" href="#">Public Profile</a>
+              <a class="dropdown-item waves-effect waves-light" href="#">Game History</a>
+              <a class="dropdown-item waves-effect waves-light" href="#">Message Center
+                <span class="badge badge-round red">1</span>
               </a>
-              <a class="dropdown-item waves-effect waves-light
-              " href="# ">Account Settings</a>
+              <a class="dropdown-item waves-effect waves-light" href="#">Account Settings</a>
             </div>
           </li>
         </ul>
@@ -62,13 +56,14 @@
     <!--row-->
     <div class="row wow fadeIn">
       <!--column-->
-      <div class="col-md-10 mx-auto mb-4">
+      <div class="col-lg-12 mx-auto mb-4">
         <!--card-->
         <div class="card col__bg__image--gradient">
           <!--content-->
           <div class="card-body text-center">
             <div class="row justify-content-center align-items-center">
-              <div class="col-6 m-0">
+              <div class="col-3 m-0"></div>
+              <div class="col-6 m-0 text-center">
                 <h2 class="h2-responsive m-0">Game Arena</h2>
               </div>
               <div class="col-3">
@@ -83,18 +78,18 @@
     </div>
     <!--row-->
     <!--row-->
-    <div class="row wow fadeIn row-eq-height">
-      <!--column-->
-      <div class="col-md-5 offset-md-1 mb-4">
+    <div class="row wow fadeIn">
+      <!-- column -->
+      <div class="col-lg-3 mb-4 chat">
         <!--card-->
-        <div class="card h-100">
+        <div class="card">
           <h3 class="h3-responsive card-header primary-color-dark lighten-1 white-text
               text-center">Chat</h3>
           <!--content-->
-          <div class="card-body text-center">
+          <div class="message-card-body card-body text-center">
             <div id="messages"></div>
             <form onsubmit="send_message(); return false;" class="md-form input-group">
-              <input type="text" class="form-control" value="" id="send_message_holder" placeholder="Enter your message" aria-label="Enter your message"
+              <input type="text" class="form-control" value="" id="send_message_holder" placeholder="Enter message" aria-label="Enter message"
                 autocomplete="off">
               <div class="input-group-append">
                 <a class="btn-floating blue-gradient waves-light m-0" onclick="send_message(); return false;" style="border-radius: 2px;"
@@ -107,72 +102,9 @@
         </div>
         <!--card-->
       </div>
+      <!-- column -->
       <!--column-->
-      <div class="col-md-5 mb-4">
-        <div class="card">
-          <h3 class="h3-responsive card-header primary-color-dark lighten-1 white-text
-              text-center">Scoreboard</h3>
-          <div id="scoreboard" class="card-body">
-            <div class="row score-progress align-items-center text-center mt-1 border-bottom pb-2">
-              <div class="col-3">
-                <span id="whitesum" class="text-score"></span>
-              </div>
-              <div class="col-3">
-                <img src="img/discs/t2w.gif" alt="white score">
-              </div>
-              <div class="col-3">
-                <img src="img/discs/t2b.gif" alt="black score">
-              </div>
-              <div class="col-3">
-                <span id="blacksum" class="text-score"></span>
-              </div>
-            </div>
-            <div class="row player-info align-items-center mt-3">
-              <div class="col-6">
-                <p id="whitePlayer" class="text-left w-100 m-0"></p>
-              </div>
-              <div class="col-6">
-                <p id="blackPlayer" class="text-right w-100 m-0"></p>
-              </div>
-            </div>
-            <div class="row game-progress border-bottom pb-3">
-              <div class="col-6">
-                <div class="progress">
-                  <span id="whiteScore" class="mx-0 mb-2 progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow=""
-                    aria-valuemin="0" aria-valuemax="64"></span>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="progress">
-                  <span id="blackScore" class="mx-0 progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow=""
-                    aria-valuemin="0" aria-valuemax="64"></span>
-                </div>
-              </div>
-            </div>
-            <div class="row align-items-center justify-content-center text-center m-0">
-              <div class="col-12 d-flex">
-                <div id="gameTime" class="col-8 offset-2">
-                  <p id="elapsed" class="m-0 p-0"></p>
-                </div>
-              </div>
-              <div class="col-12 text-center">
-                <h4>ELAPSED ROUND TIME</h4>
-              </div>
-            </div>
-            <div class="row align-items-center justify-content-center text-center m-0">
-
-                <div id="game_over">
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--row-->
-    <!--row-->
-    <div class="row wow fadeIn justify-content-center align-items-center">
-      <!--column-->
-      <div class="col-md-10 mx-auto mb-4">
+      <div class="col-lg-6 mb-4">
         <div class="card">
           <h3 class="h3-responsive card-header primary-color-dark lighten-1 white-text
               text-center align-items-center">Game Board</h3>
@@ -222,7 +154,7 @@
                 </td>
               </tr>
               <tr>
-                <td id="1_0 w2b">
+                <td id="1_0">
                   <div class="content">
                     <div class="disc"></div>
                   </div>
@@ -521,6 +453,66 @@
         <!--card-->
       </div>
       <!--column-->
+      <!--column-->
+      <div class="col-lg-3">
+        <div class="mb-4">
+          <div class="card">
+            <h3 class="h3-responsive card-header primary-color-dark lighten-1 white-text
+                text-center">Scoreboard</h3>
+            <div id="scoreboard" class="card-body">
+              <div class="row score-progress align-items-center text-center mt-1 border-bottom pb-2">
+                <div class="col-6">
+                  <div class="disc-score--white text-center mx-auto">
+                    <span id="whitesum" class="text-score"></span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="disc-score--black  text-center mx-auto">
+                    <span id="blacksum" class="text-score"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row player-info align-items-center mt-3">
+                <div class="col-6">
+                  <p id="whitePlayer" class="text-left w-100 m-0"></p>
+                </div>
+                <div class="col-6">
+                  <p id="blackPlayer" class="text-right w-100 m-0"></p>
+                </div>
+              </div>
+              <div class="row game-progress border-bottom pb-3">
+                <div class="col-6">
+                  <div class="progress">
+                    <span id="whiteScore" class="mx-0 mb-2 progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow=""
+                      aria-valuemin="0" aria-valuemax="64"></span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="progress">
+                    <span id="blackScore" class="mx-0 progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow=""
+                      aria-valuemin="0" aria-valuemax="64"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row text-center m-0">
+                <div class="col-12">
+                  <div id="gameTime">
+                    <p id="elapsed" class="m-0 p-0"></p>
+                  </div>
+                </div>
+                <div class="col-12 text-center">
+                  <h4>ROUND TIME</h4>
+                </div>
+              </div>
+              <div class="row text-center m-0">
+                <div id="game_over">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- column -->
+      </div>
     </div>
     <!--row-->
   </section>
@@ -564,13 +556,13 @@
       <!--/.Content-->
     </div>
   </div>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1614578-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-1614578-3');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1614578-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-1614578-3');
+  </script>
 </body>
 
 </html>

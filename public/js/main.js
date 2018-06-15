@@ -267,7 +267,7 @@ socket.on('send_message_response', function(payload) {
   var newHTML =
     '<span class="text-left mb-3">' +
     payload.message +
-    '</span><h5 class="text-left border-bottom mt-4 mb-3 blue-text">' +
+    '</span><h5 class="text-left border-bottom mb-3 blue-text">' +
     decodeURIComponent(payload.username) +
     '</h5>';
 

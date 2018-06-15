@@ -507,8 +507,10 @@ body.about .container-fluid .row:first-of-type {
   background: -webkit-gradient(linear, left top, right top, from(#ef473a), to(#cb2d3e));
   background: linear-gradient(to right, #ef473a, #cb2d3e); }
 
+.message-card-body {
+  overflow: hidden; }
+
 #messages {
-  overflow-y: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -516,11 +518,20 @@ body.about .container-fluid .row:first-of-type {
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
-  min-height: 450px;
-  max-height: 480px; }
+  height: 200px;
+  margin-right: -50px;
+  padding-right: 40px;
+  overflow-y: scroll; }
 
 #messages p {
-  margin: 0.1rem 0 !important; }
+  margin: 0.1rem 0 !important;
+  line-height: 1.15;
+  font-weight: 300;
+  font-size: 1rem; }
+
+#messages h5 {
+  line-height: 1.15;
+  font-size: 1rem; }
 
 .card-img-64 {
   width: 64px;
@@ -535,7 +546,12 @@ body.about .container-fluid .row:first-of-type {
 #quit .btn {
   color: #fff;
   background: -webkit-gradient(linear, left top, right top, from(#ef473a), to(#cb2d3e));
-  background: linear-gradient(to right, #ef473a, #cb2d3e); }
+  background: linear-gradient(to right, #ef473a, #cb2d3e);
+  width: 100%;
+  min-width: 50px;
+  max-width: 175px;
+  padding: 0.8rem 0.5rem;
+  word-wrap: normal; }
 
 .row-eq-height {
   display: -webkit-box;
@@ -554,22 +570,39 @@ body.about .container-fluid .row:first-of-type {
           flex-direction: column; }
 
 /*----------  Game Scoreboard  ----------*/
+.disc-score--black,
+.disc-score--white {
+  height: 5rem;
+  width: 5rem;
+  max-height: 150px;
+  max-width: 150px;
+  border-radius: 50%; }
+
+.disc-score--black {
+  background-image: radial-gradient(circle, #000000, #0f0c0c, #181614, #1e1d1a, #242521);
+  color: #fafafa; }
+
+.disc-score--white {
+  background-image: radial-gradient(circle, #ffffff, #f5f9fe, #e6f6f8, #ddf1e8, #e9ebe5);
+  color: #0a0a0a; }
+
 .progress {
   height: 3rem;
   background-color: rgba(0, 0, 0, 0.3); }
 
 .progress .progress-bar {
   height: 3rem;
-  font-size: 2rem;
-  color: #fff; }
+  font: 2rem/1 Orbitron;
+  color: #fff;
+  text-indent: 1rem;
+  padding-top: 0.5rem; }
 
 #whitePlayer,
 #blackPlayer {
   text-transform: uppercase; }
 
 .text-score {
-  font-size: 2.1rem;
-  color: #00499d; }
+  font: 2.5rem/5rem Roboto; }
 
 #gameTime {
   background: #00499d; }
@@ -577,9 +610,7 @@ body.about .container-fluid .row:first-of-type {
 #elapsed {
   color: #fff;
   padding: 0.5rem 0 0 !important;
-  font-size: 2.2rem;
-  font-weight: bold;
-  text-indent: 0.5rem;
+  font-size: 2rem;
   font-family: Orbitron, -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; }
 
 #scoreBoard h4 {
